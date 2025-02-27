@@ -41,7 +41,7 @@ main {
     gap: 1.5rem;
 
     p {
-        @include light-weight-font()
+        @include light-weight-font;
     }
 
     h1 {
@@ -72,7 +72,7 @@ main {
         gap: 2rem;
 
         p {
-            @include light-weight-font()
+            @include light-weight-font;
         }
 
         h1 {
@@ -84,7 +84,7 @@ main {
         button {
             width: fit-content;
             padding: 1rem;
-            border: 0.7rem;
+            border: 0.7rem solid black;
             border-radius: 0.5em;
             background-color: black;
             color: rgb(232, 232, 225);
@@ -121,22 +121,91 @@ main {
             }
 
             p {
-                @include light-weight-font()
+                @include light-weight-font;
             }
         }
     }
 
 }
 
+.testimonials{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f8f8f8;
+    border-radius: 1rem;
 
-@media (min-width:1020px) {
+    h2{
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .testimonial-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 1rem;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeIn 0.8s ease-out forwards;
+        animation-delay: var(--delay, 0s);
+        transition: all 1s ease-in-out;
+
+        img{
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        h3{
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-top: 0.5rem ;
+        }
+        p{
+            @include light-weight-font;
+            font-style: italic;
+            margin-top: 0.5rem;
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+// Stagger animations for each card
+.testimonial-card:nth-child(2) { --delay: 0.2s; }
+.testimonial-card:nth-child(3) { --delay: 0.4s; }
+.testimonial-card:nth-child(4) { --delay: 0.6s; }
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+@media (min-width:950px) {
 
     main {
         padding: 3rem;
 
     }
 
-    view-1 {
+    .view-1 {
         h1 {
             font-size: 8rem;
             width: 100%;
@@ -169,6 +238,15 @@ main {
                 width: initial;
             }
 
+        }
+    }
+
+    .testimonials{
+        flex-direction: row;
+        justify-content: center;
+
+        .testimonial-card{
+            width: 40%;
         }
     }
 

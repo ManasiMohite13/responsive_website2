@@ -72,7 +72,7 @@ main {
   width: -moz-fit-content;
   width: fit-content;
   padding: 1rem;
-  border: 0.7rem;
+  border: 0.7rem solid black;
   border-radius: 0.5em;
   background-color: black;
   color: rgb(232, 232, 225);
@@ -104,11 +104,85 @@ main {
   opacity: 0.8;
 }
 
-@media (min-width: 1020px) {
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border-radius: 1rem;
+}
+.testimonials h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.testimonials .testimonial-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+  transition: all 1s ease-in-out;
+}
+.testimonials .testimonial-card img {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.testimonials .testimonial-card h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+.testimonials .testimonial-card p {
+  font-weight: 200;
+  opacity: 0.8;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+.testimonials .testimonial-card p:hover {
+  transform: scale(1.2);
+}
+
+.testimonial-card:nth-child(2) {
+  --delay: 0.2s;
+}
+
+.testimonial-card:nth-child(3) {
+  --delay: 0.4s;
+}
+
+.testimonial-card:nth-child(4) {
+  --delay: 0.6s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 950px) {
   main {
     padding: 3rem;
   }
-  view-1 h1 {
+  .view-1 h1 {
     font-size: 8rem;
     width: 100%;
   }
@@ -132,5 +206,12 @@ main {
   .view-2 .bottom .line {
     height: 1px;
     width: initial;
+  }
+  .testimonials {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .testimonials .testimonial-card {
+    width: 40%;
   }
 }/*# sourceMappingURL=style.css.map */
